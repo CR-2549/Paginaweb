@@ -7,28 +7,28 @@ from pathlib import Path
 from decouple import config
 import dj_database_url
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-uroborosgaming"
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
-if 'CODESPACE_NAME' in os.environ:
+if "CODESPACE_NAME" in os.environ:
     codespace_name = config("CODESPACE_NAME")
     codespace_domain = config("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN")
     CSRF_TRUSTED_ORIGINS = [
-        f'https://{codespace_name}-8000.{codespace_domain}'
+        f"https://{codespace_name}-8000.{codespace_domain}"
     ]
 else:
     CSRF_TRUSTED_ORIGINS = [
-        'https://localhost:8000',
-        'http://localhost:8000',
-        'https://127.0.0.1:8000',
-        'http://127.0.0.1:8000',
-        'https://uroboros-gaming4.onrender.com',
+        "https://localhost:8000",
+        "http://localhost:8000",
+        "https://127.0.0.1:8000",
+        "http://127.0.0.1:8000",
+        "https://uroboros-gaming4.onrender.com",
+        "https://uroborosgaming10.onrender.com",
     ]
 
 INSTALLED_APPS = [
@@ -116,11 +116,20 @@ STATIC_ROOT = BASE_DIR / "hello_world" / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": "dhoo7y3oj",
     "API_KEY": "354613818298319",
     "API_SECRET": "WitSGd_FxLEqlrOpY7Zvb9iicxQ",
 }
 
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
