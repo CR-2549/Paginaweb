@@ -111,7 +111,4 @@ STATIC_ROOT = BASE_DIR / "hello_world" / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"git add .
-git commit -m "Add whitenoise"
-git push
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
