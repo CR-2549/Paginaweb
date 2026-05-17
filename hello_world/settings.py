@@ -5,6 +5,7 @@ Django settings for hello_world project.
 import os
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -73,10 +74,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "hello_world.wsgi.application"
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.parse(
+        "postgresql://cristian_robles_user:Fz1OPhvhInn6fWrNi9v5LQGw6uZmk93F@dpg-d84ugvt7vvec73fioh7g-a.oregon-postgres.render.com/cristian_robles"
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
