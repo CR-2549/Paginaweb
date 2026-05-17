@@ -54,6 +54,6 @@ def crear_game(request):
             category=category
         )
 
-        return redirect('/catalogo/')
+        return redirect('catalogo')
 
     return render(request, 'blog/crear.html')
