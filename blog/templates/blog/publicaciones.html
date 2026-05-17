@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Catálogo Gamer</title>
+
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}?v=2">
+
+</head>
+
+<body>
+
+<h1>Catálogo de Videojuegos</h1>
+
+<a href="{% url 'home' %}">
+    <button class="back-button">
+        ⬅ Inicio
+    </button>
+</a>
+
+<br><br>
+
+<div class="categories">
+
+    <a href="/catalogo/">
+        <button class="category-button">
+            Todos
+        </button>
+    </a>
+
+    {% for category in categories %}
+
+        <a href="/catalogo/?category={{ category.name }}">
+
+            <button class="category-button">
+
+                {{ category.name }}
+
+            </button>
+
+        </a>
+
+    {% endfor %}
+
+</div>
+
+<div class="posts">
+
+    {% for game in games %}
+
+        <div class="post">
+
+            <h2>{{ game.title }}</h2>
+
+            <img src="{{ game.image.url }}" width="250">
+
+            <p>{{ game.description }}</p>
+
+            <p>
+                <strong>Plataforma:</strong>
+                {{ game.platform }}
+            </p>
+
+            <p>
+                <strong>Categoría:</strong>
+                {{ game.category }}
+            </p>
+
+            <small>
+                {{ game.release_date|date:"d M Y H:i" }}
+            </small>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
