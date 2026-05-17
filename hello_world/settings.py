@@ -7,6 +7,7 @@ from pathlib import Path
 from decouple import config
 import dj_database_url
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-uroborosgaming"
@@ -37,6 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "cloudinary",
+    "cloudinary_storage",
+
     "blog",
 ]
 
@@ -111,4 +116,11 @@ STATIC_ROOT = BASE_DIR / "hello_world" / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": "dhoo7y3oj",
+    "API_KEY": "354613818298319",
+    "API_SECRET": "WitSGd_FxLEqlrOpY7Zvb9iicxQ",
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
